@@ -5,7 +5,7 @@ export const Navbar = () => {
       <nav>
         <div className="nav-wrapper">
           <a href="!#" className="brand-logo">
-            Logo
+            Panel de Reservas DAD
           </a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
