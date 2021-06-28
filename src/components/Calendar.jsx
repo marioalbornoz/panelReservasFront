@@ -1,10 +1,28 @@
+import axios from 'axios';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import Config from '../utils/Config';
 
 
 
 function Calendar() {
   const [value, onChange] = useState(new Date());
   const [date, setDate] = useState();
+
+  useEffect(()=>{
+    console.log(`${date} desde el useEffect`);
+    const enviarDate = async () =>{
+        try {
+          const res = await axios(`${Config.urlBase}ok/${date}`);
+          console.log(res.data.date);
+        } catch (error) {
+          if(error.status !== 401){
+            console.log(`Error al enviar la fecha`);
+          }
+        }
+    } 
+    enviarDate();
+  }, [date])
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -21,14 +39,14 @@ function Calendar() {
   }
 
   return (
-    <div className="card col s5 yellow accent-3">
+    <div className="card col s3 yellow accent-3">
       <form className="input-field">
         <p>
           <input
             type="date"
             name="fechacita"
             min="2010-02-20"
-            max={`${value.getFullYear()}-${value.getMonth()+1 < 10 ? `0${value.getMonth()+1}` : value.getMonth()+1 }-${value.getUTCDate() }`}
+            max={`${value.getFullYear()}-${value.getMonth()+1 < 10 ? `0${value.getMonth()+1}` : value.getMonth()+1 }-${value.getUTCDate() -1 }`}
             onChange={handleChange}
             className="validate"
           />

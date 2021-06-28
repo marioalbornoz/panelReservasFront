@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Spinner } from "react-bootstrap";
 import ReactFlow from "react-flow-renderer";
 import { TotalContext } from "../context/TotalContext";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { StockContext } from "../context/StockContext";
 
 
@@ -36,7 +36,7 @@ export const Diagrams = () => {
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: <>Reservas ok <br /> <p>{reservasok ? reservasok : <Spinner animation="border" variant="secondary" />}</p></>},
-      position: { x: 210, y: 100 },
+      position: { x: 280, y: 100 },
       draggable: false
     },
     {
@@ -44,7 +44,7 @@ export const Diagrams = () => {
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: <>Reservas Pendientes <p>{reservaspendientes ? reservaspendientes : <Spinner animation="border" variant="danger" />}</p></> },
-      position: { x: 210, y: 260 },
+      position: { x: 280, y: 260 },
     },
     // {
     //   id: 'horizontal-4',
@@ -58,77 +58,77 @@ export const Diagrams = () => {
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: <>Pendiente Bodega<p>{pendientesproveedor? pendientesproveedor : <Spinner animation="border" variant="dark" />}</p></> },
-      position: { x: 380, y: 200 },
+      position: { x: 550, y: 200 },
     },
     {
       id: 'horizontal-6',
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: <>Pendiente Provedor<p>{prendientesbodegas ? prendientesbodegas:<Spinner animation="border" variant="info" />}</p></> },
-      position: { x: 380, y: 330 },
+      position: { x: 550, y: 330 },
     },
     {
       id: 'horizontal-7',
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: 'Node 7' },
-      position: { x: 550, y: 150 },
+      position: { x: 900, y: 150 },
     },
     {
       id: 'horizontal-8',
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: '8' },
-      position: { x: 750, y: 270 },
+      position: { x: 1200, y: 270 },
     },
     {
       id: 'horizontal-9',
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: '9' },
-      position: { x: 750, y: 330 },
+      position: { x: 1200, y: 330 },
     },
     {
       id: 'horizontal-19',
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: <>Reservas rescatadas <p>{reservasresctadas? reservasresctadas :   <Spinner animation="border" variant="danger" />}</p></> },
-      position: { x: 580, y: 300 },
+      position: { x: 900, y: 300 },
     },
     {
       id: 'horizontal-20',
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: <>Reservas informadas como pendientes <p>{reservasinfopendientes ? reservasinfopendientes : <Spinner animation="border" variant="warning" />}</p></> },
-      position: { x: 580, y: 400 },
+      position: { x: 900, y: 400 },
     },
     {
       id: 'horizontal-21',
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: '21' },
-      position: { x: 750, y: 400 },
+      position: { x: 1200, y: 400 },
     },
     {
       id: 'horizontal-22',
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: '22' },
-      position: { x: 750, y: 450 },
+      position: { x: 1200, y: 450 },
     },
     {
       id: 'horizontal-23',
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: '23' },
-      position: { x: 950, y: 380 },
+      position: { x: 1500, y: 380 },
     },
     {
       id: 'horizontal-24',
       sourcePosition: 'right',
       targetPosition: 'left',
       data: { label: '24' },
-      position: { x: 950, y: 450 },
+      position: { x: 1500, y: 450 },
     },
   
     {

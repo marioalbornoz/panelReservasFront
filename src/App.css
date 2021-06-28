@@ -61,7 +61,7 @@
 .react-flow__node-default, .react-flow__node-input, .react-flow__node-output {
 	padding: 8px !important;
 	border-radius: 23px !important;
-	width: 10% !important;
+	/* width: 9% !important; */
 	font-size: 12px;
 	color: #222;
 	text-align: center !important;
@@ -76,7 +76,32 @@
 }
 
 .tarjeta{
-  height: 70px;
+  margin-right: 5px;
+  height: 150px;
   padding: 10px;
   color: #cce8f0;
+  /* display: flex; */
+  /* align-items: center; */
+  text-align: center;
+}
+
+.titles {
+  margin-top: 6px !important;
+}
+.flag{
+  margin: 1px;
+  /* margin: 0px; */
+  color: #cce8f0;
+  font-weight: bold;
+  text-align: center;
+  border-width: 8px !important;
+  border-color: brown !important;
+
+  /* border-width: 5px; */
+}
+.row .col.s8 {
+	width: 65.6666666667%;
+	margin-left: auto;
+	left: auto;
+	right: auto;
 }
