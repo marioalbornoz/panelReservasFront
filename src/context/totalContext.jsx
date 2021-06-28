@@ -1,15 +1,52 @@
-import React, { useState } from "react";
-import { createContext } from "react";
+import axios from "axios";
+import React, { useState,createContext, useEffect } from "react";
+import Config from "../utils/Config";
 
-export const totalContext = createContext();
+export const TotalContext = createContext();
 
-const totalProvider = (props) => {
-  const [totalcount, guardarTotalcount] = useState(0);
+const TotalProvider = (props) => {
+
+  const [ totalcount, setTotalcount] = useState();
+  const [reservasok, setReservasok] = useState();
+  const [reservaspendientes, setReservasPendientes] = useState();
+  const [pendientesproveedor, setPendientesProveedor] = useState();
+  const [prendientesbodegas, setPendientesBodega] = useState();
+
+  // ejecutar llamado a la api
+  useEffect(() => {
+    const obtenerCountTotal = async () => {
+      try {
+          const allCounts = await axios.get(Config.totalesUrl);
+          console.log('====================================');
+          console.log(allCounts);
+          console.log('====================================');
+          setTotalcount(allCounts.data.total[0]);
+          setReservasok(allCounts.data.reservasok);
+          setReservasPendientes(allCounts.data.pendientes.total[0]);
+          setPendientesProveedor(allCounts.data.pendientes.pendientes_proveedor.total);
+          setPendientesBodega(allCounts.data.pendientes.pendientes_bodega);
+        
+      } catch(err){
+        if(err.status !== 404){
+            console.log(`Error 404`);
+        }
+      }
+    }
+    obtenerCountTotal();
+  }, [setTotalcount, setReservasok ])
   return (
-    <totalContext.Provider value={{ totalcount, guardarTotalcount }}>
+    <TotalContext.Provider
+      value={{
+        totalcount,
+        reservasok,
+        reservaspendientes,
+        pendientesproveedor,
+        prendientesbodegas,
+      }}
+    >
       {props.children}
-    </totalContext.Provider>
+    </TotalContext.Provider>
   );
 };
 
-export default totalProvider;
+export default TotalProvider;

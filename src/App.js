@@ -1,8 +1,12 @@
-// import logo from './logo.svg';
 import './App.css';
 import { Diagrams } from './components/Diagrams';
 import { Navbar } from './components/Navbar';
-// import HorizontalFlow from './components/DiagramsHorizontal';
+import StockProvider from './context/StockContext';
+import TotalProvider from './context/TotalContext';
+
+import 'react-calendar/dist/Calendar.css';
+import Calendar from './components/Calendar';
+import { Kpi } from './components/Kpi';
 
 function App() {
   return (
@@ -13,16 +17,37 @@ function App() {
 
         <HorizontalFlow />
       </div> */}
-    <div class="row">
-      <div class="col s5">1</div>
-      <div class="col s4">2</div>
-      <div class="col s3">3</div>
-    </div>
       <div className="row">
-        <div className="col s12">
-        <Diagrams />
+        <div className="col s5 m-2">
+          <Calendar />
+          <div className="col s7">
+            <Kpi />
+          </div>
+        </div>
+
+        <div className="col s4">
+          <div className="row">
+            <div className="col s5">2.1</div>
+            <div className="col s7 m-2">
+              <Kpi />
+            </div>
+          </div>
+        </div>
+        <div className="col s3 m-2">
+          <div className="col s5">
+            <Kpi />
+          </div>
         </div>
       </div>
+      <TotalProvider>
+        <StockProvider>
+          <div className="row">
+            <div className="col s12">
+              <Diagrams />
+            </div>
+          </div>
+        </StockProvider>
+      </TotalProvider>
     </>
   );
 }

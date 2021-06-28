@@ -1,10 +1,25 @@
 import React from "react";
+import { useContext } from "react";
+import { Spinner } from "react-bootstrap";
 import ReactFlow from "react-flow-renderer";
+import { TotalContext } from "../context/TotalContext";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { StockContext } from "../context/StockContext";
 
 
 
 export const Diagrams = () => {
 
+  const {
+    totalcount,
+    reservasok,
+    reservaspendientes,
+    pendientesproveedor,
+    prendientesbodegas,
+  } = useContext(TotalContext);
+
+  const { totalbodega, reservasresctadas, reservasinfopendientes } =
+    useContext(StockContext);
 
   const elements = [
     {
@@ -12,7 +27,7 @@ export const Diagrams = () => {
       sourcePosition: 'right',
       // type: 'input',
       className: 'dark-node',
-      data: { label: <>Reservas confirmadas <br /><p>12.202</p></> },
+      data: { label: <>Reservas confirmadas <br />{totalcount ? totalcount :<Spinner animation="border" variant="primary" />}</> },
       position: { x: 30, y: 180 },
       draggable: false
     },
@@ -20,7 +35,7 @@ export const Diagrams = () => {
       id: 'horizontal-2',
       sourcePosition: 'right',
       targetPosition: 'left',
-      data: { label: 'Reservas ok' },
+      data: { label: <>Reservas ok <br /> <p>{reservasok ? reservasok : <Spinner animation="border" variant="secondary" />}</p></>},
       position: { x: 210, y: 100 },
       draggable: false
     },
@@ -28,7 +43,7 @@ export const Diagrams = () => {
       id: 'horizontal-3',
       sourcePosition: 'right',
       targetPosition: 'left',
-      data: { label: 'Reservas Pendientes' },
+      data: { label: <>Reservas Pendientes <p>{reservaspendientes ? reservaspendientes : <Spinner animation="border" variant="danger" />}</p></> },
       position: { x: 210, y: 260 },
     },
     // {
@@ -42,14 +57,14 @@ export const Diagrams = () => {
       id: 'horizontal-5',
       sourcePosition: 'right',
       targetPosition: 'left',
-      data: { label: 'Pendientes Proveedor' },
+      data: { label: <>Pendiente Bodega<p>{pendientesproveedor? pendientesproveedor : <Spinner animation="border" variant="dark" />}</p></> },
       position: { x: 380, y: 200 },
     },
     {
       id: 'horizontal-6',
       sourcePosition: 'right',
       targetPosition: 'left',
-      data: { label: 'Pendientes Bodega' },
+      data: { label: <>Pendiente Provedor<p>{prendientesbodegas ? prendientesbodegas:<Spinner animation="border" variant="info" />}</p></> },
       position: { x: 380, y: 330 },
     },
     {
@@ -77,14 +92,14 @@ export const Diagrams = () => {
       id: 'horizontal-19',
       sourcePosition: 'right',
       targetPosition: 'left',
-      data: { label: 'Reservas rescatadas19' },
+      data: { label: <>Reservas rescatadas <p>{reservasresctadas? reservasresctadas :   <Spinner animation="border" variant="danger" />}</p></> },
       position: { x: 580, y: 300 },
     },
     {
       id: 'horizontal-20',
       sourcePosition: 'right',
       targetPosition: 'left',
-      data: { label: 'Reservas informadas como pendientes' },
+      data: { label: <>Reservas informadas como pendientes <p>{reservasinfopendientes ? reservasinfopendientes : <Spinner animation="border" variant="warning" />}</p></> },
       position: { x: 580, y: 400 },
     },
     {

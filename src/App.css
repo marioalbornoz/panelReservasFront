@@ -74,3 +74,9 @@
   justify-content: center !important;
   flex-direction: column;
 }
+
+.tarjeta{
+  height: 70px;
+  padding: 10px;
+  color: #cce8f0;
+}
