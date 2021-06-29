@@ -9,6 +9,8 @@ const StockProvider = (props) => {
   const [ totalbodega, setTotalBodega] = useState();
   const [reservasresctadas, setReservasRescatadas] = useState();
   const [reservasinfopendientes, setReservasInfoPendientes] = useState();
+  const [reservaspdtescambiofecha, setReservasPdtesCambioFecha] = useState();
+  const [reservapdteredespacho, setReservasPdtesRedespacho] = useState();
 //   const [pendientesproveedor, setPendientesProveedor] = useState();
 //   const [prendientesbodegas, setPendientesBodega] = useState();
 
@@ -23,6 +25,8 @@ const StockProvider = (props) => {
           setTotalBodega(allCounts.data.total);
           setReservasRescatadas(allCounts.data.data.reservas_rescatadas.total);
           setReservasInfoPendientes(allCounts.data.data.Informadas_pendientes.total);
+          setReservasPdtesCambioFecha(allCounts.data.data.Informadas_pendientes.cambio_fecha.total)
+          setReservasPdtesRedespacho(allCounts.data.data.Informadas_pendientes.pendientes_redespacho)
         //   setPendientesProveedor(allCounts.data.pendientes.pendientes_proveedor.total);
         //   setPendientesBodega(allCounts.data.pendientes.pendientes_bodega);
       } catch(err){
@@ -39,6 +43,8 @@ const StockProvider = (props) => {
         totalbodega,
         reservasresctadas,
         reservasinfopendientes,
+        reservaspdtescambiofecha,
+        reservapdteredespacho
         // pendientesproveedor,
         // prendientesbodegas,
       }}

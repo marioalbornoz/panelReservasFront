@@ -1,12 +1,12 @@
 import React from 'react'
-
+import logo from './../utils/logo.png'
 
 export const Navbar = () => {
     return (
       <nav>
         <div className="nav-wrapper  blue darken-1">
-          <a href="!#" className="brand-logo ml-1">
-            Panel de Reservas DAD
+          <a href="!#" className="brand-logo" style={{'paddingLeft':20}}>
+            <img src={logo} alt="" height={35} /> Panel de Reservas DAD
           </a>
           {/* <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>

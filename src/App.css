@@ -83,10 +83,15 @@
   /* display: flex; */
   /* align-items: center; */
   text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(143, 143, 226);
 }
 
 .titles {
-  margin-top: 6px !important;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #fff;
 }
 .flag{
   margin: 1px;
@@ -99,9 +104,13 @@
 
   /* border-width: 5px; */
 }
-.row .col.s8 {
+/* .row .col.s8 {
 	width: 65.6666666667%;
 	margin-left: auto;
 	left: auto;
 	right: auto;
+} */
+
+.calendar{
+  margin-top: 30px;
 }

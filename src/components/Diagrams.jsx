@@ -8,11 +8,14 @@ import { StockContext } from "../context/StockContext";
 import Loader from "react-loader-spinner";
 
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { ProveedorContext } from "../context/ProveedorContext";
+import { VtaVdeContext } from "../context/VtaVdeContext";
 
 
 
 
 export const Diagrams = () => {
+
 
   const {
     totalcount,
@@ -22,8 +25,18 @@ export const Diagrams = () => {
     prendientesbodegas,
   } = useContext(TotalContext);
 
-  const { totalbodega, reservasresctadas, reservasinfopendientes } =
-    useContext(StockContext);
+  const {
+    totalbodega,
+    reservasresctadas,
+    reservasinfopendientes,
+    reservaspdtescambiofecha,
+    reservapdteredespacho
+  } = useContext(StockContext);
+
+  const { rescatadas, informadaspedtes } = useContext(ProveedorContext);
+  // const { bloqueadas, conredespacho } = useContext(VtaVdeContext);
+  const { stockbloqueadas, conredespacho, nuevafecha, provbloqueadas } =
+    useContext(VtaVdeContext);
 
   const elements = [
     {
@@ -119,7 +132,7 @@ export const Diagrams = () => {
       data: {
         label: (
           <>
-            Pendiente Bodega
+            Pendiente Proveedor
             <p>
               {pendientesproveedor ? (
                 pendientesproveedor
@@ -136,7 +149,7 @@ export const Diagrams = () => {
           </>
         ),
       },
-      position: { x: 550, y: 200 },
+      position: { x: 550, y: 150 },
     },
     {
       id: "horizontal-6",
@@ -145,7 +158,7 @@ export const Diagrams = () => {
       data: {
         label: (
           <>
-            Pendiente Provedor
+            Pendiente Bodega
             <p>
               {prendientesbodegas ? (
                 prendientesbodegas
@@ -168,22 +181,37 @@ export const Diagrams = () => {
       id: "horizontal-7",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label: "Node 7" },
-      position: { x: 900, y: 150 },
+      data: { label: <>
+        Reservas rescatadas
+        <p>
+          {rescatadas ? (
+            rescatadas
+          ) : (
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={25}
+              width={25}
+              timeout={60000} //3 secs
+            />
+          )}
+        </p>
+      </> },
+      position: { x: 850, y: 70 },
     },
     {
       id: "horizontal-8",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label: "8" },
-      position: { x: 1200, y: 270 },
+      data: { label: "Rescatadas despacho en el dia" },
+      position: { x: 1100, y: 270 },
     },
     {
       id: "horizontal-9",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label: "9" },
-      position: { x: 1200, y: 330 },
+      data: { label: "Reservas despacho dia siguiente" },
+      position: { x: 1100, y: 340 },
     },
     {
       id: "horizontal-19",
@@ -209,7 +237,7 @@ export const Diagrams = () => {
           </>
         ),
       },
-      position: { x: 900, y: 300 },
+      position: { x: 850, y: 300 },
     },
     {
       id: "horizontal-20",
@@ -235,35 +263,174 @@ export const Diagrams = () => {
           </>
         ),
       },
-      position: { x: 900, y: 400 },
+      position: { x: 850, y: 400 },
+      
     },
     {
       id: "horizontal-21",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label: "21" },
-      position: { x: 1200, y: 400 },
+      data: { label: <>
+        Pendiente cambio de fecha{" "}
+        <p>
+          {reservaspdtescambiofecha ? (
+            reservaspdtescambiofecha
+          ) : (
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={20}
+              width={20}
+              timeout={40000} //3 secs
+            />
+          )}
+        </p>
+      </> },
+      position: { x: 1070, y: 410 },
+      style: {
+        background: '#D6D5E6',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-22",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label: "22" },
-      position: { x: 1200, y: 450 },
+      data: { label:  <>
+        Pendiente redespacho{" "}
+        <p>
+          {reservapdteredespacho ? (
+            reservapdteredespacho
+          ) : (
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={20}
+              width={20}
+              timeout={40000} //3 secs
+            />
+          )}
+        </p>
+      </>  },
+      position: { x: 1100, y: 500 },
     },
     {
       id: "horizontal-23",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label: "23" },
-      position: { x: 1500, y: 380 },
+      data: { label:  <>
+        Reservas bloqueadas stock{" "}
+        <p>
+          {stockbloqueadas ? (
+            stockbloqueadas
+          ) : (
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={20}
+              width={20}
+              timeout={40000} //3 secs
+            />
+          )}
+        </p>
+      </>  },
+      position: { x: 1400, y: 380 },
     },
     {
       id: "horizontal-24",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label: "24" },
-      position: { x: 1500, y: 450 },
+      data: { label:  <>
+        Reservas con Redespacho{" "}
+        <p>
+          {conredespacho ? (
+            conredespacho
+          ) : (
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={20}
+              width={20}
+              timeout={40000} //3 secs
+            />
+          )}
+        </p>
+      </>  },
+      position: { x: 1400, y: 500 },
+    },
+    {
+      id: "horizontal-25",
+      sourcePosition: "right",
+      targetPosition: "left",
+      data: { label:  <>
+        Reservas informadas como pendientes{" "}
+        <p>
+          {informadaspedtes ? (
+            informadaspedtes
+          ) : (
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={20}
+              width={20}
+              timeout={60000} //3 secs
+            />
+          )}
+        </p>
+      </>  },
+      position: { x: 850, y: 190 },
+    },
+    {
+      id: "horizontal-26",
+      sourcePosition: "right",
+      targetPosition: "left",
+      data: { label:  <>
+        Reservas bloqueadas{" "}
+        <p>
+          {provbloqueadas ? (
+            provbloqueadas
+          ) : (
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={20}
+              width={20}
+              timeout={40000} //3 secs
+            />
+          )}
+        </p>
+      </>  },
+      position: { x: 1400, y: 230 },
+      style: {
+        background: '#D6D5E6',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
+    },
+    {
+      id: "horizontal-27",
+      sourcePosition: "right",
+      targetPosition: "left",
+      data: { label:  <>
+        Reservas con nuevas fechas{" "}
+        <p>
+          {nuevafecha ? (
+            nuevafecha
+          ) : (
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={20}
+              width={20}
+              timeout={40000} //3 secs
+            />
+          )}
+        </p>
+      </>  },
+      position: { x: 1400, y: 130 },
     },
 
     {
@@ -306,6 +473,27 @@ export const Diagrams = () => {
       source: "horizontal-5",
       type: "smoothstep",
       target: "horizontal-7",
+      animated: true,
+    },
+    {
+      id: "horizontal-e5-25",
+      source: "horizontal-5",
+      type: "smoothstep",
+      target: "horizontal-25",
+      animated: true,
+    },
+    {
+      id: "horizontal-e25-26",
+      source: "horizontal-25",
+      type: "smoothstep",
+      target: "horizontal-26",
+      animated: true,
+    },
+    {
+      id: "horizontal-e25-27",
+      source: "horizontal-25",
+      type: "smoothstep",
+      target: "horizontal-27",
       animated: true,
     },
     {
