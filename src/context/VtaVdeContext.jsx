@@ -12,22 +12,18 @@ const VtaVdeProvider = (props) => {
   const [conredespacho, setIConRedespacho] = useState();
   const [provbloqueadas, setProvBloqueadas] = useState();
   const [nuevafecha, setNuevaFecha] = useState();
-//   const [pendientesVtaVde, setPendientesVtaVde] = useState();
-//   const [prendientesbodegas, setPendientesBodega] = useState();
-    // console.log('desde ell vta vde context',date);
   // ejecutar llamado a la api
   useEffect(() => {
     const obtenerCountBodega = async () => {
       try {
+        if (date) {
           const allCounts = await axios.get(`${Config.urlBase}VtaVde/${date}`);
-          console.log('====================================');
           console.log(allCounts);
-          console.log('====================================');
           setBloqueadas(allCounts.data.stock_bloqueadas);
           setIConRedespacho(allCounts.data.conredespacho);
           setProvBloqueadas(allCounts.data.nueva_fecha);
           setNuevaFecha(allCounts.data.prov_bloqueadas);
-          
+        }
       } catch(err){
         if(err.status !== 404){
             console.log(`Error 404`);

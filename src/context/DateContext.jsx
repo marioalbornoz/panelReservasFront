@@ -8,12 +8,23 @@ const DateProvider = (props) => {
 
     const [value] = useState(new Date());
     const [date, setDate] = useState();
+    const [actualizar, setActualizar] = useState(false);
 
   // ejecutar llamado a la api
   useEffect(() => {
-    setDate(`${value.getFullYear()}-${value.getMonth()+1 < 10 ? `0${value.getMonth()+1}` : value.getMonth()+1 }-${value.getDate() }`)
+    setDate(
+      `${value.getFullYear()}-${
+        value.getMonth() + 1 < 10
+          ? `0${value.getMonth() + 1}`
+          : value.getMonth() + 1
+      }-${value.getDate()}`
+    );
+    setActualizar(true);
+  }, [value]);
+
+  const actualizarFecha = () => {
     
-  }, [value])
+  }
   return (
     <DateContext.Provider
       value={{

@@ -12,17 +12,18 @@ const ProveedorProvider = (props) => {
   const [informadaspedtes, setInformadasPdtes] = useState();
 //   const [pendientesproveedor, setPendientesProveedor] = useState();
 //   const [prendientesbodegas, setPendientesBodega] = useState();
-    console.log('desde ell provedor context',date);
   // ejecutar llamado a la api
   useEffect(() => {
     const obtenerCountBodega = async () => {
       try {
-          const allCounts = await axios.get(`${Config.urlBase}proveedor/${date}`);
-          console.log('====================================');
-          console.log(allCounts);
-          console.log('====================================');
-          setRescatadas(allCounts.data.rescatadas);
-          setInformadasPdtes(allCounts.data.Informadas_pendientes);
+          if(date){
+            const allCounts = await axios.get(
+              `${Config.urlBase}proveedor/${date}`
+            );
+            console.log(allCounts);
+            setRescatadas(allCounts.data.rescatadas);
+            setInformadasPdtes(allCounts.data.Informadas_pendientes);
+          }
           
       } catch(err){
         if(err.status !== 404){

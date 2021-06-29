@@ -11,6 +11,9 @@ import ProveedorProvider from './context/ProveedorContext';
 import DateProvider from './context/DateContext';
 import VtaVdeProvider from './context/VtaVdeContext';
 
+// import Loader from "react-loader-spinner";
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
 function App() {
   return (
     <>
@@ -23,9 +26,9 @@ function App() {
 
       <DateProvider>
         <VtaVdeProvider>
-          <TotalProvider>
+          <ProveedorProvider>
             <StockProvider>
-              <ProveedorProvider>
+              <TotalProvider>
                 <div className="row titles">
                   <div className="col s8 blue darken-1 flag">
                     Distribución - DAD
@@ -40,7 +43,11 @@ function App() {
                     <Calendar />
                     <div className="col s2"></div>
                     <div className="col s5">
-                      <Kpi primero="Cumplimiento" segundo="Pendientes" color="light-blue lighten-5" />
+                      <Kpi
+                        primero="Cumplimiento"
+                        segundo="Pendientes"
+                        color="light-blue lighten-5"
+                      />
                     </div>
                   </div>
 
@@ -73,9 +80,21 @@ function App() {
                     <Diagrams />
                   </div>
                 </div>
-              </ProveedorProvider>
+
+                {/* <div className="row">
+                  <div className="col s3">
+                    <Loader
+                      type="Watch"
+                      color="#00BFFF"
+                      height={30}
+                      width={30}
+                      timeout={60000} //3 secs
+                    />
+                  </div>
+                </div> */}
+              </TotalProvider>
             </StockProvider>
-          </TotalProvider>
+          </ProveedorProvider>
         </VtaVdeProvider>
       </DateProvider>
     </>

@@ -7,7 +7,7 @@ export const TotalContext = createContext();
 
 const TotalProvider = (props) => {
 
-    const {date} = useContext(DateContext);
+  const {date} = useContext(DateContext);
 
   const [ totalcount, setTotalcount] = useState();
   const [reservasok, setReservasok] = useState();
@@ -19,15 +19,17 @@ const TotalProvider = (props) => {
   useEffect(() => {
     const obtenerCountTotal = async () => {
       try {
-          const allCounts = await axios.get(`${Config.totalesUrl}/${date}`);
-          console.log('====================================');
-          console.log(allCounts);
-          console.log('====================================');
-          setTotalcount(allCounts.data.total[0]);
-          setReservasok(allCounts.data.reservasok);
-          setReservasPendientes(allCounts.data.pendientes.total[0]);
-          setPendientesProveedor(allCounts.data.pendientes.pendientes_proveedor.total);
-          setPendientesBodega(allCounts.data.pendientes.pendientes_bodega);
+          if (date) {
+            const allCounts = await axios.get(`${Config.totalesUrl}/${date}`);
+            console.log(allCounts);
+            setTotalcount(allCounts.data.total[0]);
+            setReservasok(allCounts.data.reservasok);
+            setReservasPendientes(allCounts.data.pendientes.total[0]);
+            setPendientesProveedor(
+              allCounts.data.pendientes.pendientes_proveedor.total
+            );
+            setPendientesBodega(allCounts.data.pendientes.pendientes_bodega);
+          }
         
       } catch(err){
         if(err.status !== 404){

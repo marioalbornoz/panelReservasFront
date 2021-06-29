@@ -10,13 +10,16 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { ProveedorContext } from "../context/ProveedorContext";
 import { VtaVdeContext } from "../context/VtaVdeContext";
+import { useEffect } from "react";
+import { DateContext } from "../context/DateContext";
+import { useState } from "react";
 
 
 
 
 export const Diagrams = () => {
 
-
+  
   const {
     totalcount,
     reservasok,
@@ -24,19 +27,27 @@ export const Diagrams = () => {
     pendientesproveedor,
     prendientesbodegas,
   } = useContext(TotalContext);
-
+  
   const {
-    totalbodega,
     reservasresctadas,
+    reservasresctadashoy,
+    reservasresctadasmanana,
     reservasinfopendientes,
     reservaspdtescambiofecha,
-    reservapdteredespacho
+    reservapdteredespacho,
   } = useContext(StockContext);
-
+  
   const { rescatadas, informadaspedtes } = useContext(ProveedorContext);
   // const { bloqueadas, conredespacho } = useContext(VtaVdeContext);
   const { stockbloqueadas, conredespacho, nuevafecha, provbloqueadas } =
-    useContext(VtaVdeContext);
+  useContext(VtaVdeContext);
+
+  const {date} = useContext(DateContext);
+  const [spinner, setSpinner] = useState(false);
+  
+  useEffect(()=> {
+    setSpinner(!spinner);
+  }, [date, totalcount])
 
   const elements = [
     {
@@ -56,7 +67,7 @@ export const Diagrams = () => {
                 color="#00BFFF"
                 height={25}
                 width={25}
-                timeout={40000} //3 secs
+                timeout={60000} //3 secs
               />
             )}
           </>
@@ -88,7 +99,7 @@ export const Diagrams = () => {
                   color="#00BFFF"
                   height={25}
                   width={25}
-                  timeout={40000} //3 secs
+                  timeout={60000} //3 secs
                 />
               )}
             </p>
@@ -121,7 +132,7 @@ export const Diagrams = () => {
                   color="#00BFFF"
                   height={25}
                   width={25}
-                  timeout={40000} //3 secs
+                  timeout={60000} //3 secs
                 />
               )}
             </p>
@@ -160,7 +171,7 @@ export const Diagrams = () => {
                   color="#00BFFF"
                   height={25}
                   width={25}
-                  timeout={40000} //3 secs
+                  timeout={60000} //3 secs
                 />
               )}
             </p>
@@ -183,7 +194,7 @@ export const Diagrams = () => {
         label: (
           <>
             Pendiente Bodega
-            <p>
+            <p className="numero">
               {prendientesbodegas ? (
                 prendientesbodegas
               ) : (
@@ -192,7 +203,7 @@ export const Diagrams = () => {
                   color="#00BFFF"
                   height={25}
                   width={25}
-                  timeout={40000} //3 secs
+                  timeout={60000} //3 secs
                 />
               )}
             </p>
@@ -240,10 +251,30 @@ export const Diagrams = () => {
       },
     },
     {
+      
       id: "horizontal-8",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label: "Rescatadas despacho en el dia" },
+      data: {
+        label: (
+          <>
+            Rescatadas despacho en el dia
+            <p>
+              {reservasresctadashoy ? (
+                reservasresctadashoy
+              ) : (
+                <Loader
+                  type="Puff"
+                  color="#00BFFF"
+                  height={25}
+                  width={25}
+                  timeout={60000} //3 secs
+                />
+              )}
+            </p>
+          </>
+        ),
+      },
       position: { x: 1100, y: 270 },
       style: {
         background: '#f9fbe7',
@@ -256,7 +287,26 @@ export const Diagrams = () => {
       id: "horizontal-9",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label: "Reservas despacho dia siguiente" },
+      data: {
+        label: (
+          <>
+            Rescatadas despacho dia siguiente
+            <p>
+              {reservasresctadasmanana ? (
+                reservasresctadasmanana
+              ) : (
+                <Loader
+                  type="Puff"
+                  color="#00BFFF"
+                  height={25}
+                  width={25}
+                  timeout={60000} //3 secs
+                />
+              )}
+            </p>
+          </>
+        ),
+      },
       position: { x: 1100, y: 340 },
       style: {
         background: '#f9fbe7',
@@ -282,7 +332,7 @@ export const Diagrams = () => {
                   color="#00BFFF"
                   height={25}
                   width={25}
-                  timeout={40000} //3 secs
+                  timeout={60000} //3 secs
                 />
               )}
             </p>
@@ -314,14 +364,14 @@ export const Diagrams = () => {
                   color="#00BFFF"
                   height={20}
                   width={20}
-                  timeout={40000} //3 secs
+                  timeout={60000} //3 secs
                 />
               )}
             </p>
           </>
         ),
       },
-      position: { x: 850, y: 400 },
+      position: { x: 850, y: 430 },
       style: {
         background: '#f9fbe7',
         color: '#333',
@@ -346,14 +396,14 @@ export const Diagrams = () => {
                   color="#00BFFF"
                   height={20}
                   width={20}
-                  timeout={40000} //3 secs
+                  timeout={60000} //3 secs
                 />
               )}
             </p>
           </>
         ),
       },
-      position: { x: 1070, y: 410 },
+      position: { x: 1100, y: 410 },
       style: {
         background: '#f9fbe7',
         color: '#333',
@@ -378,7 +428,7 @@ export const Diagrams = () => {
                   color="#00BFFF"
                   height={20}
                   width={20}
-                  timeout={40000} //3 secs
+                  timeout={60000} //3 secs
                 />
               )}
             </p>
@@ -410,7 +460,7 @@ export const Diagrams = () => {
                   color="#80d8ff"
                   height={20}
                   width={20}
-                  timeout={40000} //3 secs
+                  timeout={60000} //3 secs
                 />
               )}
             </p>
@@ -442,7 +492,7 @@ export const Diagrams = () => {
                   color="#80d8ff"
                   height={20}
                   width={20}
-                  timeout={40000} //3 secs
+                  timeout={60000} //3 secs
                 />
               )}
             </p>
@@ -506,14 +556,14 @@ export const Diagrams = () => {
                   color="#00BFFF"
                   height={20}
                   width={20}
-                  timeout={40000} //3 secs
+                  timeout={60000} //3 secs
                 />
               )}
             </p>
           </>
         ),
       },
-      position: { x: 1400, y: 230 },
+      position: { x: 1400, y: 200 },
       style: {
         background: "#f3e5f5",
         color: "#333",
@@ -538,14 +588,14 @@ export const Diagrams = () => {
                   color="#00BFFF"
                   height={20}
                   width={20}
-                  timeout={40000} //3 secs
+                  timeout={60000} //3 secs
                 />
               )}
             </p>
           </>
         ),
       },
-      position: { x: 1400, y: 130 },
+      position: { x: 1400, y: 100 },
       style: {
         background: "#f3e5f5",
         color: "#333",
@@ -676,13 +726,26 @@ export const Diagrams = () => {
   ];
 
   return (
-   <>
-     <div style={{  height: 1280, width: '100%' }}>
-      <ReactFlow elements={elements} zoomOnScroll={true} className="react-flow" >
-        {/* <Background variant="lines" gap={200} size={1}/> */}
-        {/* <Background variant="lines" gap={100} size={1} style={{height:'100%'}} /> */}
-      </ReactFlow>
-    </div>
-   </>
+    <>
+      <div style={{ height: 670, width: "100%" }}>
+        <ReactFlow
+          elements={elements}
+          zoomOnScroll={true}
+          className="react-flow"
+        >
+          {/* <Background variant="lines" gap={200} size={1}/> */}
+          {/* <Background variant="lines" gap={100} size={1} style={{height:'100%'}} /> */}
+        </ReactFlow>
+        {spinner ? <Loader
+            type="Grid"
+            color="#00BFFF"
+            height={50}
+            width={50}
+            timeout={65000} //3 secs
+          /> : (
+          null
+        )}
+      </div>
+    </>
   );
 };
