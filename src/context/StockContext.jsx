@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useState,createContext, useEffect } from "react";
+import { useContext } from "react";
 import Config from "../utils/Config";
+import { DateContext } from "./DateContext";
 
 export const StockContext = createContext();
 
 const StockProvider = (props) => {
 
+  const {date} = useContext(DateContext);
   const [ totalbodega, setTotalBodega] = useState();
   const [reservasresctadas, setReservasRescatadas] = useState();
   const [reservasinfopendientes, setReservasInfoPendientes] = useState();
@@ -18,7 +21,7 @@ const StockProvider = (props) => {
   useEffect(() => {
     const obtenerCountBodega = async () => {
       try {
-          const allCounts = await axios.get(Config.bodegaUrl);
+          const allCounts = await axios.get(`${Config.bodegaUrl}/${date}`);
           console.log('====================================');
           console.log(allCounts);
           console.log('====================================');
@@ -36,7 +39,7 @@ const StockProvider = (props) => {
       }
     }
     obtenerCountBodega();
-  }, [])
+  }, [date])
   return (
     <StockContext.Provider
       value={{

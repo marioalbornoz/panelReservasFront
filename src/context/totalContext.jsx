@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useState,createContext, useEffect } from "react";
+import { useContext } from "react";
 import Config from "../utils/Config";
-
+import { DateContext } from "./DateContext";
 export const TotalContext = createContext();
 
 const TotalProvider = (props) => {
+
+    const {date} = useContext(DateContext);
 
   const [ totalcount, setTotalcount] = useState();
   const [reservasok, setReservasok] = useState();
@@ -16,7 +19,7 @@ const TotalProvider = (props) => {
   useEffect(() => {
     const obtenerCountTotal = async () => {
       try {
-          const allCounts = await axios.get(Config.totalesUrl);
+          const allCounts = await axios.get(`${Config.totalesUrl}/${date}`);
           console.log('====================================');
           console.log(allCounts);
           console.log('====================================');
@@ -33,7 +36,7 @@ const TotalProvider = (props) => {
       }
     }
     obtenerCountTotal();
-  }, [setTotalcount, setReservasok ])
+  }, [date ])
   return (
     <TotalContext.Provider
       value={{

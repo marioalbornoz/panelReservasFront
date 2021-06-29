@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const Kpi = ({primero, segundo}) => {
+export const Kpi = ({primero, segundo, color}) => {
     return (
-      <div className="card light-blue darken-1 tarjeta">
+      <div className={`card ${color} tarjeta`}>
         <p>KPIS</p>
         <p>% {primero}</p>
         <p>% {segundo}</p>

@@ -40,7 +40,7 @@ function App() {
                     <Calendar />
                     <div className="col s2"></div>
                     <div className="col s5">
-                      <Kpi primero="Cumplimiento" segundo="Pendientes" />
+                      <Kpi primero="Cumplimiento" segundo="Pendientes" color="light-blue lighten-5" />
                     </div>
                   </div>
 
@@ -51,6 +51,7 @@ function App() {
                         <Kpi
                           primero="Reservas Rescatadas"
                           segundo="Reservas Pendientes"
+                          color="lime lighten-5"
                         />
                       </div>
                       <div className="col s3"></div>
@@ -62,6 +63,7 @@ function App() {
                       <Kpi
                         primero="Reservas Bloqueadas menor a 48 hrs"
                         segundo="Reservas Redespacho"
+                        color="purple lighten-5"
                       />
                     </div>
                   </div>

@@ -64,6 +64,12 @@ export const Diagrams = () => {
       },
       position: { x: 30, y: 180 },
       draggable: false,
+      style: {
+        background: '#e1f5fe',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-2",
@@ -91,6 +97,12 @@ export const Diagrams = () => {
       },
       position: { x: 280, y: 100 },
       draggable: false,
+      style: {
+        background: '#e1f5fe',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-3",
@@ -117,6 +129,12 @@ export const Diagrams = () => {
         ),
       },
       position: { x: 280, y: 260 },
+      style: {
+        background: '#e1f5fe',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     // {
     //   id: 'horizontal-4',
@@ -150,6 +168,12 @@ export const Diagrams = () => {
         ),
       },
       position: { x: 550, y: 150 },
+      style: {
+        background: '#e1f5fe',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-6",
@@ -176,28 +200,44 @@ export const Diagrams = () => {
         ),
       },
       position: { x: 550, y: 330 },
+      style: {
+        background: '#e1f5fe',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-7",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label: <>
-        Reservas rescatadas
-        <p>
-          {rescatadas ? (
-            rescatadas
-          ) : (
-            <Loader
-              type="Puff"
-              color="#00BFFF"
-              height={25}
-              width={25}
-              timeout={60000} //3 secs
-            />
-          )}
-        </p>
-      </> },
+      data: {
+        label: (
+          <>
+            Reservas rescatadas
+            <p>
+              {rescatadas ? (
+                rescatadas
+              ) : (
+                <Loader
+                  type="Puff"
+                  color="#00BFFF"
+                  height={25}
+                  width={25}
+                  timeout={60000} //3 secs
+                />
+              )}
+            </p>
+          </>
+        ),
+      },
       position: { x: 850, y: 70 },
+      style: {
+        background: '#f9fbe7',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-8",
@@ -205,6 +245,12 @@ export const Diagrams = () => {
       targetPosition: "left",
       data: { label: "Rescatadas despacho en el dia" },
       position: { x: 1100, y: 270 },
+      style: {
+        background: '#f9fbe7',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-9",
@@ -212,6 +258,12 @@ export const Diagrams = () => {
       targetPosition: "left",
       data: { label: "Reservas despacho dia siguiente" },
       position: { x: 1100, y: 340 },
+      style: {
+        background: '#f9fbe7',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-19",
@@ -238,6 +290,12 @@ export const Diagrams = () => {
         ),
       },
       position: { x: 850, y: 300 },
+      style: {
+        background: '#f9fbe7',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-20",
@@ -264,31 +322,40 @@ export const Diagrams = () => {
         ),
       },
       position: { x: 850, y: 400 },
-      
+      style: {
+        background: '#f9fbe7',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-21",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label: <>
-        Pendiente cambio de fecha{" "}
-        <p>
-          {reservaspdtescambiofecha ? (
-            reservaspdtescambiofecha
-          ) : (
-            <Loader
-              type="Puff"
-              color="#00BFFF"
-              height={20}
-              width={20}
-              timeout={40000} //3 secs
-            />
-          )}
-        </p>
-      </> },
+      data: {
+        label: (
+          <>
+            Pendiente cambio de fecha{" "}
+            <p>
+              {reservaspdtescambiofecha ? (
+                reservaspdtescambiofecha
+              ) : (
+                <Loader
+                  type="Puff"
+                  color="#00BFFF"
+                  height={20}
+                  width={20}
+                  timeout={40000} //3 secs
+                />
+              )}
+            </p>
+          </>
+        ),
+      },
       position: { x: 1070, y: 410 },
       style: {
-        background: '#D6D5E6',
+        background: '#f9fbe7',
         color: '#333',
         border: '1px solid #222138',
         width: 180,
@@ -298,115 +365,159 @@ export const Diagrams = () => {
       id: "horizontal-22",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label:  <>
-        Pendiente redespacho{" "}
-        <p>
-          {reservapdteredespacho ? (
-            reservapdteredespacho
-          ) : (
-            <Loader
-              type="Puff"
-              color="#00BFFF"
-              height={20}
-              width={20}
-              timeout={40000} //3 secs
-            />
-          )}
-        </p>
-      </>  },
+      data: {
+        label: (
+          <>
+            Pendiente redespacho{" "}
+            <p>
+              {reservapdteredespacho ? (
+                reservapdteredespacho
+              ) : (
+                <Loader
+                  type="Puff"
+                  color="#00BFFF"
+                  height={20}
+                  width={20}
+                  timeout={40000} //3 secs
+                />
+              )}
+            </p>
+          </>
+        ),
+      },
       position: { x: 1100, y: 500 },
+      style: {
+        background: '#f9fbe7',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-23",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label:  <>
-        Reservas bloqueadas stock{" "}
-        <p>
-          {stockbloqueadas ? (
-            stockbloqueadas
-          ) : (
-            <Loader
-              type="Puff"
-              color="#00BFFF"
-              height={20}
-              width={20}
-              timeout={40000} //3 secs
-            />
-          )}
-        </p>
-      </>  },
+      data: {
+        label: (
+          <>
+            Reservas bloqueadas stock{" "}
+            <p>
+              {stockbloqueadas ? (
+                stockbloqueadas
+              ) : (
+                <Loader
+                  type="Puff"
+                  color="#80d8ff"
+                  height={20}
+                  width={20}
+                  timeout={40000} //3 secs
+                />
+              )}
+            </p>
+          </>
+        ),
+      },
       position: { x: 1400, y: 380 },
+      style: {
+        background: '#f3e5f5',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-24",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label:  <>
-        Reservas con Redespacho{" "}
-        <p>
-          {conredespacho ? (
-            conredespacho
-          ) : (
-            <Loader
-              type="Puff"
-              color="#00BFFF"
-              height={20}
-              width={20}
-              timeout={40000} //3 secs
-            />
-          )}
-        </p>
-      </>  },
+      data: {
+        label: (
+          <>
+            Reservas con Redespacho{" "}
+            <p>
+              {conredespacho ? (
+                conredespacho
+              ) : (
+                <Loader
+                  type="Puff"
+                  color="#80d8ff"
+                  height={20}
+                  width={20}
+                  timeout={40000} //3 secs
+                />
+              )}
+            </p>
+          </>
+        ),
+      },
       position: { x: 1400, y: 500 },
+      style: {
+        background: "#f3e5f5",
+        color: "#333",
+        border: "1px solid #222138",
+        width: 180,
+      },
     },
     {
       id: "horizontal-25",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label:  <>
-        Reservas informadas como pendientes{" "}
-        <p>
-          {informadaspedtes ? (
-            informadaspedtes
-          ) : (
-            <Loader
-              type="Puff"
-              color="#00BFFF"
-              height={20}
-              width={20}
-              timeout={60000} //3 secs
-            />
-          )}
-        </p>
-      </>  },
+      data: {
+        label: (
+          <>
+            Reservas informadas como pendientes{" "}
+            <p>
+              {informadaspedtes ? (
+                informadaspedtes
+              ) : (
+                <Loader
+                  type="Puff"
+                  color="#00BFFF"
+                  height={20}
+                  width={20}
+                  timeout={60000} //3 secs
+                />
+              )}
+            </p>
+          </>
+        ),
+      },
       position: { x: 850, y: 190 },
+      style: {
+        background: '#f9fbe7',
+        color: '#333',
+        border: '1px solid #222138',
+        width: 180,
+      },
     },
     {
       id: "horizontal-26",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label:  <>
-        Reservas bloqueadas{" "}
-        <p>
-          {provbloqueadas ? (
-            provbloqueadas
-          ) : (
-            <Loader
-              type="Puff"
-              color="#00BFFF"
-              height={20}
-              width={20}
-              timeout={40000} //3 secs
-            />
-          )}
-        </p>
-      </>  },
+      data: {
+        label: (
+          <>
+            Reservas bloqueadas{" "}
+            <p>
+              {provbloqueadas ? (
+                provbloqueadas
+              ) : (
+                <Loader
+                  type="Puff"
+                  color="#00BFFF"
+                  height={20}
+                  width={20}
+                  timeout={40000} //3 secs
+                />
+              )}
+            </p>
+          </>
+        ),
+      },
       position: { x: 1400, y: 230 },
       style: {
-        background: '#D6D5E6',
-        color: '#333',
-        border: '1px solid #222138',
+        background: "#f3e5f5",
+        color: "#333",
+        border: "1px solid #222138",
         width: 180,
       },
     },
@@ -414,23 +525,33 @@ export const Diagrams = () => {
       id: "horizontal-27",
       sourcePosition: "right",
       targetPosition: "left",
-      data: { label:  <>
-        Reservas con nuevas fechas{" "}
-        <p>
-          {nuevafecha ? (
-            nuevafecha
-          ) : (
-            <Loader
-              type="Puff"
-              color="#00BFFF"
-              height={20}
-              width={20}
-              timeout={40000} //3 secs
-            />
-          )}
-        </p>
-      </>  },
+      data: {
+        label: (
+          <>
+            Reservas con nuevas fechas{" "}
+            <p>
+              {nuevafecha ? (
+                nuevafecha
+              ) : (
+                <Loader
+                  type="Puff"
+                  color="#00BFFF"
+                  height={20}
+                  width={20}
+                  timeout={40000} //3 secs
+                />
+              )}
+            </p>
+          </>
+        ),
+      },
       position: { x: 1400, y: 130 },
+      style: {
+        background: "#f3e5f5",
+        color: "#333",
+        border: "1px solid #222138",
+        width: 180,
+      },
     },
 
     {
