@@ -276,7 +276,7 @@ export const Diagrams = () => {
           </>
         ),
       },
-      position: { x: 1100, y: 270 },
+      position: { x: 1100, y: 250 },
       style: {
         background: '#f9fbe7',
         color: '#333',
@@ -308,7 +308,7 @@ export const Diagrams = () => {
           </>
         ),
       },
-      position: { x: 1100, y: 340 },
+      position: { x: 1100, y: 350 },
       style: {
         background: '#f9fbe7',
         color: '#333',
@@ -372,7 +372,7 @@ export const Diagrams = () => {
           </>
         ),
       },
-      position: { x: 850, y: 430 },
+      position: { x: 850, y: 440 },
       style: {
         background: '#f9fbe7',
         color: '#333',
@@ -404,7 +404,7 @@ export const Diagrams = () => {
           </>
         ),
       },
-      position: { x: 1100, y: 410 },
+      position: { x: 1100, y: 450 },
       style: {
         background: '#f9fbe7',
         color: '#333',
@@ -436,7 +436,7 @@ export const Diagrams = () => {
           </>
         ),
       },
-      position: { x: 1100, y: 500 },
+      position: { x: 1100, y: 550 },
       style: {
         background: '#f9fbe7',
         color: '#333',
