@@ -46,7 +46,8 @@ export const Diagrams = () => {
   const [spinner, setSpinner] = useState(false);
   
   useEffect(()=> {
-    setSpinner(!spinner);
+    setSpinner(s => !s);
+    // console.log(totalcount,date);
   }, [date, totalcount])
 
   const elements = [
