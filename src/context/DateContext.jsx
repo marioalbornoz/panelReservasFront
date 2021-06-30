@@ -1,4 +1,5 @@
 // import axios from "axios";
+// import { CronJob } from "cron";
 import React, { useState,createContext, useEffect } from "react";
 // import Config from "../utils/Config";
 
@@ -6,7 +7,7 @@ export const DateContext = createContext();
 
 const DateProvider = (props) => {
 
-    const [value] = useState(new Date());
+    const [value, setValue] = useState(new Date());
     const [date, setDate] = useState();
     // const [actualizar, setActualizar] = useState(false);
 
@@ -19,12 +20,23 @@ const DateProvider = (props) => {
           : value.getMonth() + 1
       }-${value.getDate()}`
     );
+    setTimeout(() => {
+      console.log(`se actualizo date`);
+      setValue(new Date())
+    }, 36000000);
     // setActualizar(true);
   }, [value]);
 
-  // const actualizarFecha = () => {
-    
-  // }
+  // const jobDate = new CronJob({
+  //   cronTime: `0 */1 * * *`,
+  //   onTick: () => {
+  //     console.log(`CRON execute for change date`);
+  //     setValue(new Date());
+  //   },
+  //   runOnInit: true,
+  //   start: false,
+  //   timeZone: "America/Santiago",
+  // });
   return (
     <DateContext.Provider
       value={{

@@ -1,4 +1,5 @@
 import React from 'react'
+// import { useState } from 'react';
 import { useContext } from 'react';
 import { ProveedorContext } from '../context/ProveedorContext';
 import { StockContext } from '../context/StockContext';
@@ -10,16 +11,23 @@ export const Kpi = ({primero, segundo, color}) => {
     totalcount,
     reservasok,
     reservaspendientes,
-    pendientesproveedor,
     prendientesbodegas,
   } = useContext(TotalContext);
   
-    const {reservasresctadas} = useContext(StockContext)
-    const {rescatadas} = useContext(ProveedorContext);
+    const {reservasresctadas, reservasinfopendientes} = useContext(StockContext)
+    const {rescatadas, informadaspedtes} = useContext(ProveedorContext);
 
+
+    const bodegaTotal = (a,b,c,d) => {
+      if(a){
+          const reinyectado = (parseInt(b) + parseInt(c)) - parseInt(d);
+          return parseInt(parseInt(reinyectado) + parseInt(a));
+      }
+    }
     const mostrarPorcentaje =(a,b,c)=> {
+      console.log(a);
       if(c){
-        return `${(b*100/a).toFixed(2)}%`;
+        return `${(parseInt(b)*100/parseInt(a)).toFixed(2)}%`;
       } 
     }  
 
@@ -32,8 +40,8 @@ export const Kpi = ({primero, segundo, color}) => {
             ? mostrarPorcentaje(totalcount, reservasok, true)
             : primero === "Reservas Rescatadas"
             ? mostrarPorcentaje(
-                pendientesproveedor + prendientesbodegas,
-                reservasresctadas + rescatadas,
+              bodegaTotal(reservaspendientes, reservasresctadas, reservasinfopendientes, prendientesbodegas),
+                parseInt(reservasresctadas) + parseInt(rescatadas),
                 true
               )
             : primero === "Reservas Bloqueadas menor a 48 hrs"
@@ -45,9 +53,13 @@ export const Kpi = ({primero, segundo, color}) => {
           {segundo === "Pendientes"
             ? mostrarPorcentaje(totalcount, reservaspendientes, true)
             : segundo === "Reservas Pendientes"
-            ? "10%"
+            ? mostrarPorcentaje(
+              bodegaTotal(reservaspendientes, reservasresctadas, reservasinfopendientes, prendientesbodegas),
+                parseInt(reservasinfopendientes) + parseInt(informadaspedtes),
+                true
+              )
             : segundo === "Reservas Redespacho"
-            ? "20%"
+            ? "100%"
             : null}
         </p>
       </div>
