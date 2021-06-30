@@ -8,7 +8,7 @@ const DateProvider = (props) => {
 
     const [value] = useState(new Date());
     const [date, setDate] = useState();
-    const [actualizar, setActualizar] = useState(false);
+    // const [actualizar, setActualizar] = useState(false);
 
   // ejecutar llamado a la api
   useEffect(() => {
@@ -19,12 +19,12 @@ const DateProvider = (props) => {
           : value.getMonth() + 1
       }-${value.getDate()}`
     );
-    setActualizar(true);
+    // setActualizar(true);
   }, [value]);
 
-  const actualizarFecha = () => {
+  // const actualizarFecha = () => {
     
-  }
+  // }
   return (
     <DateContext.Provider
       value={{
